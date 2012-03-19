@@ -58,12 +58,12 @@ public class Import_Qcamraw implements PlugIn {
 		FileInfo fi = new FileInfo();
 		fi.width = Integer.parseInt(roi[2]) - Integer.parseInt(roi[0]);
 		fi.height = Integer.parseInt(roi[3]) - Integer.parseInt(roi[1]);
-		fi.offset = 1 + Integer.parseInt(headerSizeValue.replaceAll(" \\[bytes\\]",""));
+		fi.offset = Integer.parseInt(headerSizeValue.replaceAll(" \\[bytes\\]",""));
 		fi.nImages = (int) (fileLength - headerSize) / frameSize;
 		if (headerHash.get("Image-Encoding").matches("raw16")){
-			fi.fileType = FileInfo.GRAY16_UNSIGNED;
+			fi.fileType = FileInfo.GRAY16_UNSIGNED; // what about other conditions?
 		}
-		
+		fi.intelByteOrder = true;
 		fi.fileName = fileName;
 		fi.directory = directory;
 		new FileOpener(fi).open();
