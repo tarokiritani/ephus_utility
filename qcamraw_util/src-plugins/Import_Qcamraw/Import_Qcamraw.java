@@ -44,9 +44,6 @@ public class Import_Qcamraw implements PlugIn {
 		try{
 			ImagePlus averagedIm = new ImagePlus();
 			for (int i = 0; i < files.length; i++) {
-				if (files.length > 16) {
-					IJ.showMessage("error", "you can average only up to 16 image sets..");
-				}
 				
 				File f = files[i];
 				HashMap<String, String> headerHash = getHeader(directory, f.getName());
