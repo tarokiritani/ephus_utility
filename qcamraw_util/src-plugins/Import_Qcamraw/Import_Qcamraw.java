@@ -19,7 +19,7 @@ public class Import_Qcamraw implements PlugIn {
 	public void run(String arg) {
 		
 		JFileChooser jc = new JFileChooser();
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF Images", "qcamraw", "gif");
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("qcamraw images", "qcamraw", "qcamraw");
 		jc.setFileFilter(filter);
 		jc.setMultiSelectionEnabled(true);
 		if (dir==null) {
