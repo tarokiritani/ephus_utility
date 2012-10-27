@@ -17,7 +17,10 @@ public class Import_Qcamraw implements PlugIn {
 	static File dir;
 	
 	public void run(String arg) {
-		
+		File f = new File(arg);
+		if (f.exists()) {
+			System.out.println(f.getName());
+		}
 		JFileChooser jc = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("qcamraw images", "qcamraw", "qcamraw");
 		jc.setFileFilter(filter);
