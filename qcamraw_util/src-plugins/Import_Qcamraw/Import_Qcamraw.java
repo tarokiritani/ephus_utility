@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fix_roi
 import ij.*;
 import ij.process.*;
 import ij.gui.*;
@@ -99,8 +102,13 @@ public class Import_Qcamraw implements PlugIn {
 		String[] roi = headerHash.get("ROI").split(", ");		
 		
 		FileInfo fi = new FileInfo();
-		fi.width = Integer.parseInt(roi[2]) - Integer.parseInt(roi[0]);
-		fi.height = Integer.parseInt(roi[3]) - Integer.parseInt(roi[1]);
+<<<<<<< HEAD
+		fi.width = Integer.parseInt(roi[2]);
+		fi.height = Integer.parseInt(roi[3]);
+=======
+		fi.width = Integer.parseInt(roi[2]);
+		fi.height = Integer.parseInt(roi[3]);
+>>>>>>> fix_roi
 		fi.offset = Integer.parseInt(headerSizeValue.replaceAll(" \\[bytes\\]",""));
 		fi.nImages = (int) (fileLength - headerSize) / frameSize;
 		if (headerHash.get("Image-Encoding").matches("raw16")){
@@ -113,6 +121,7 @@ public class Import_Qcamraw implements PlugIn {
 	}
 
 }
+<<<<<<< HEAD
 =======
 import ij.*;
 import ij.process.*;
@@ -232,3 +241,5 @@ public class Import_Qcamraw implements PlugIn {
 
 }
 >>>>>>> 378eeaedd9aad9614deca70d8812dd4572bf9eeb
+=======
+>>>>>>> fix_roi
