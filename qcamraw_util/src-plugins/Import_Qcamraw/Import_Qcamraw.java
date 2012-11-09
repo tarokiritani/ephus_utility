@@ -17,10 +17,7 @@ public class Import_Qcamraw implements PlugIn {
 	static File dir;
 	
 	public void run(String arg) {
-		File f = new File(arg);
-		if (f.exists()) {
-			System.out.println(f.getName());
-		}
+		System.out.println(arg);
 		JFileChooser jc = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("qcamraw images", "qcamraw", "qcamraw");
 		jc.setFileFilter(filter);
@@ -101,8 +98,8 @@ public class Import_Qcamraw implements PlugIn {
 		String[] roi = headerHash.get("ROI").split(", ");		
 		
 		FileInfo fi = new FileInfo();
-		fi.width = Integer.parseInt(roi[2]) - Integer.parseInt(roi[0]);
-		fi.height = Integer.parseInt(roi[3]) - Integer.parseInt(roi[1]);
+		fi.width = Integer.parseInt(roi[2]);
+		fi.height = Integer.parseInt(roi[3]);
 		fi.offset = Integer.parseInt(headerSizeValue.replaceAll(" \\[bytes\\]",""));
 		fi.nImages = (int) (fileLength - headerSize) / frameSize;
 		if (headerHash.get("Image-Encoding").matches("raw16")){
