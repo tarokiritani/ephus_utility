@@ -17,28 +17,14 @@ public class Import_Qcamraw implements PlugIn {
 	static File dir;
 	
 	public void run(String arg) {
-		System.out.println(arg);
-		JFileChooser jc = new JFileChooser();
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("qcamraw images", "qcamraw", "qcamraw");
-		jc.setFileFilter(filter);
-		jc.setMultiSelectionEnabled(true);
-		if (dir==null) {
-			String sdir = OpenDialog.getDefaultDirectory();
-			if (sdir!=null)
-			dir = new File(sdir);
-		}
-		if (dir!=null) {
-			jc.setCurrentDirectory(dir);
-		}
-		int returnVal = jc.showOpenDialog(IJ.getInstance());
-		File[] files = jc.getSelectedFiles();
+		OpenDialog od = new OpenDialog("Select a qcamraw file.", "");
+		String directory = od.getDirectory();
+		String fileName = od.getFileName();
+		File ff = new File(directory, fileName);
+		File[] files = new File[1];
+		files[0] = ff;
 		
-		if (files.length==0) { // getSelectedFiles does not work on some JVMs
-			files = new File[1];
-			files[0] = jc.getSelectedFile();
-		}
-		
-		String directory = jc.getCurrentDirectory().getPath() + Prefs.getFileSeparator();
+		directory = directory + ff.separator;
 		ImageCalculator ic = new ImageCalculator();
 		
 		try{
