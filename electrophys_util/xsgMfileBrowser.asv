@@ -86,14 +86,14 @@ function openCellFolder_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-[f, p] = uigetfile('C:\Users\kiritani\Documents\data\*.sqlite3','select .sqlite3 file');
+[f, p] = uigetfile('C:\Data\Taro\ANALYSIS\*.sqlite3','select .sqlite3 file');
 handles.sqlite = fullfile(p, f);
-handles.dataFolder = uigetdir('C:\Users\kiritani\Documents\data','select Data Folder');
-handles.xsgFolder = fullfile(handles.dataFolder, 'cells');
+handles.dataFolder = uigetdir('C:\Data','select Data Folder');
+handles.xsgFolder = fullfile(handles.dataFolder, 'Taro', 'Cells');
 
 % append path name to cellList for MfilesMap
 mksqlite('open', handles.sqlite)
-expNum = mksqlite('SELECT DISTINCT experiment_number FROM Cells ORDER BY experiment_number');
+expNum = mksqlite('SELECT DISTINCT exp_number FROM Cells ORDER BY exp_number');
 expNum = struct2cell(expNum);
 handles.expNum = expNum;
 guidata(hObject, handles);
